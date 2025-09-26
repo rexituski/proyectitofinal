@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nivel {{ nivel }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Nivel {{ nivel }}</h1>
+
+    {% if modo == "normal" %}
+        <p><b>Info:</b> {{ pregunta.info }}</p>
+        <form method="POST" action="{{ url_for('responder', n=nivel) }}">
+            <p>{{ pregunta.pregunta }}</p>
+            {% for r in pregunta.respuestas %}
+                <label><input type="radio" name="respuesta" value="{{ r }}" required> {{ r }}</label><br>
+            {% endfor %}
+            <button type="submit">Responder</button>
+        </form>
+        {% if error %}
+            <p style="color:red;">{{ error }}</p>
+        {% endif %}
+
+    {% elif modo == "final" %}
+        <form method="POST" action="{{ url_for('responder', n=nivel) }}">
+            {% set i = session["respuestas4"]|length %}
+            <p>{{ preguntas[i].pregunta }}</p>
+            {% for r in preguntas[i].respuestas %}
+                <label><input type="radio" name="respuesta" value="{{ r }}" required> {{ r }}</label><br>
+            {% endfor %}
+            <button type="submit">Responder</button>
+        </form>
+    {% endif %}
+</body>
+</html>

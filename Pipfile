@@ -4,11 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flask = "*"
 flask-sqlalchemy = "*"
 requests = "*"
 pyttsx3 = "*"
 speechrecognition = "*"
+flask = "*"
 
 [dev-packages]
 

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Inicio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Juego medio ambiente</h1>
+    <p>Elige un nivel:</p>
+
+    <div class="botones">
+        {% for i in range(1,5) %}
+            {% if i in desbloqueados %}
+                <a href="{{ url_for('nivel', n=i) }}"><button>Nivel {{ i }}</button></a>
+            {% else %}
+                <button disabled>Nivel {{ i }} </button>
+            {% endif %}
+        {% endfor %}
+    </div>
+</body>
+</html>

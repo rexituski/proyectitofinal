@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Over</title>
+    <script>
+        setTimeout(() => {
+            document.body.style.backgroundColor = "black";
+            document.body.innerHTML = "<h1 style='color:red;text-align:center;'>El planeta explotó por tu culpa...</h1>";
+            setTimeout(() => { window.close(); }, 3000);
+        }, 2000);
+    </script>
+</head>
+<body>
+    <h1>Fallaste {{ correctas }}/5</h1>
+</body>
+</html>
